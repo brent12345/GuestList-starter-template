@@ -23,7 +23,7 @@
       <div class="row" :style="appStyles">
         <div class="col-sm-12">
           <div class="card">
-            <div class="card-header" :class="formSubmitClass">
+            <div class="card-header">
               {{ event.eventDate }}
             </div>
             <div class="card-block">
@@ -33,7 +33,9 @@
 
               <form class="form-inline" @submit.prevent="formSubmitted">
                 <input type="text" v-model="newNameText" id="nameInput" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Jane Doe">
-                <input type="submit" class="btn btn-primary" :class="formSubmitClass">
+                <input type="submit" class="btn btn-primary">
+                <button @click="methodCall" >call a method</button>
+                {{ test }}
               </form>
               {{ newNameText }}
             </div>
@@ -45,11 +47,15 @@
         <div class="col-sm-12">
           <div class="card">
             <div class="card-header">
-              Attending ({{ guestName.length }})
+              Attending ({{ guestName.length }} / {{ eventCapacity }} )
+              <br/>
+              <div class="progress">
+                  <div class="progress-bar" role="progressbar" :style="{width: eventCapacityPercentage + '%'}" aria-valuenow="36" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
             </div>
             <div class="card-block">
               <div v-if="guestName.length > 0">
-                <div class="card-success rounded name-box" v-for="name in guestName">
+                <div class="card-success rounded name-box" v-for="name in sortNames">
                     {{ name.toLowerCase() + "is awesome"}}
                 </div>
               </div>
