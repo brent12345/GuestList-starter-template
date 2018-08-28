@@ -14,9 +14,21 @@
     <div id="navigation">
         <div class="row">
             <div class="col-sm-12 text-center">
-              <h1>{{appName}}</h1>
+              <h1 @click="changeTitle" ref="name"></h1>
+              <hr>
+            </div>
+            <div>
+              <ul class="nav">
+                <div v-for="navLink in navLinks" :key="navLink.id">
+                    <!--<li v-for="(value, key, index) in navLink">{{ key }}-{{ value }} -- {{ index }}</li>
+                    <li>{{ navLink.id }}</li>-->
+                    <li class="nav-item"><a class="nav-link" :href="navLink.url">{{ navLink.name }}</a></li>
+                </template>
+              </ul>
             </div>
           </div>
+          <hr>
+         <!-- <button class="btn" @click="capcityChanged" >Change Capactiy</button>-->
     </div>
   <div id="app">
     

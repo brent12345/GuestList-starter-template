@@ -1,4 +1,4 @@
-new Vue({
+var vm1 = new Vue({
     el: '#app',
     data: {
         event: {
@@ -53,17 +53,35 @@ new Vue({
     }
 });
 
-new Vue({
+var vm2 = new Vue({
     el: '#navigation',
     data() {
         return {
             appName: 'Guest List',
             navLinks: [
-                {name: "Home", id: 1}, 
-                {name: "Upcoming", id: 2},
-                {name: "Guest Benefits", id: 3},
-                {name: "Contact", id: 4}
+                {name: "Home", id: 1, url: "https://www.google.com"}, 
+                {name: "Upcoming", id: 2, url: "https://www.amazon.com"},
+                {name: "Guest Benefits", id: 3, url: "https://www.ebay.com"},
+                {name: "Contact", id: 4, url: "https://www.bestbuy.com"}
             ]
         }
+    },
+    methods: {
+        //capcityChanged() {
+           // vm1.eventCapacity = 15
+           // vm1.title = "new title"
+       // }
+       changeTitle () {
+           this.$refs.name.innerText = "change up title"
+           console.log(this.$refs)
+       }
     }
 })
+
+//var vm3 = new Vue({
+//    template: '<div class="col-sm-12 text-center">'+
+ //   '<h1>Guest List</h1>' +
+ //   '</div>'
+//})
+//console.log(vm1, vm2)
+//vm3.$mount('#navigation')
