@@ -10,17 +10,20 @@
   <link rel="stylesheet" href="app.css">
 </head>
 <body>
-
+  <div class="container">
+    <div id="navigation">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+              <h1>{{appName}}</h1>
+            </div>
+          </div>
+    </div>
   <div id="app">
-    <div class="container">
+    
 
-      <div class="row" :style="appStyles">
-        <div class="col-sm-12 text-center">
-          <h1>Guest List</h1>
-        </div>
-      </div>
+    
 
-      <div class="row" :style="appStyles">
+      <div class="row">
         <div class="col-sm-12">
           <div class="card">
             <div class="card-header">
@@ -32,10 +35,14 @@
               <p class="card-text" v-html="event.signUpText" ></p>
 
               <form class="form-inline" @submit.prevent="formSubmitted">
-                <input type="text" v-model="newNameText" id="nameInput" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Jane Doe">
+                <input type="text" 
+                v-model="newNameText" 
+                id="nameInput" 
+                @keyup.space="keyPressed"
+                class="form-control mb-2 mr-sm-2 mb-sm-0" 
+                placeholder="Jane Doe">
                 <input type="submit" class="btn btn-primary">
-                <button @click="methodCall" >call a method</button>
-                {{ test }}
+              
               </form>
               {{ newNameText }}
             </div>
@@ -43,7 +50,7 @@
         </div>
       </div>
 
-      <div class="row" :style="appStyles">
+      <div class="row">
         <div class="col-sm-12">
           <div class="card">
             <div class="card-header">
@@ -55,8 +62,8 @@
             </div>
             <div class="card-block">
               <div v-if="guestName.length > 0">
-                <div class="card-success rounded name-box" v-for="name in sortNames">
-                    {{ name.toLowerCase() + "is awesome"}}
+                <div class="card-success rounded name-box" v-for="(name, index) in sortNames" :key="index">
+                    {{ name | formatName }} ({{ index + 1}})
                 </div>
               </div>
               <div v-else>

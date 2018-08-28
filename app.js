@@ -6,22 +6,18 @@ new Vue({
             eventTitle: 'Summer Festival!',
             eventTitle2: 'v text output',
             signUpText: 'Add your name to the guest list for <em>exclusive</em> offers',
-            eventDescription: "It's back! This years summer festival will be in the beautiful countryside featuring our best line up ever! Add your name to the guest list for exclusive offers:"
         },
         newNameText: '',
         guestName: [], 
-        appStyles: {
-            marginTop: '25px'
-
-        },
+       
         eventCapacity: 25,
         eventCapacityPercentage: 0
         
     },
     methods: {
         formSubmitted() {
-            //console.log(this.newNameText)
-            console.log('method')
+            //console.log(this.appName)
+            //console.log('method')
             if(this.newNameText.length > 0 && this.eventCapacityPercentage < 100 ) {
                 this.guestName.push(this.newNameText)
                 this.newNameText = ''
@@ -29,9 +25,9 @@ new Vue({
                 this.eventCapacityPercentage = this.guestName.length / (this.eventCapacity / 100)
             }
         },
-        methodCall() {
-            this.appStyles.marginTop = '50px'
-        },
+       keyPressed () {
+           console.log('key pressed!')
+       }
      
     },
     computed: {
@@ -39,8 +35,35 @@ new Vue({
             console.log('computed')
             return this.guestName.sort ()
         },
-        test () {
-            console.log('method text')
+     
+    },
+    watch: {
+        guestName (data) {
+            console.log('watch trigger')
+        }
+    },
+    filters: {
+      //  toUpper (value) {
+       //     return value.toUpperCase()
+       // },
+        formatName (value) {
+                //console.log(value)
+                return value.slice(0,1).toUpperCase() + value.slice(1).toLowerCase()
         }
     }
 });
+
+new Vue({
+    el: '#navigation',
+    data() {
+        return {
+            appName: 'Guest List',
+            navLinks: [
+                {name: "Home", id: 1}, 
+                {name: "Upcoming", id: 2},
+                {name: "Guest Benefits", id: 3},
+                {name: "Contact", id: 4}
+            ]
+        }
+    }
+})
