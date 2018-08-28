@@ -50,7 +50,33 @@ var vm1 = new Vue({
                 //console.log(value)
                 return value.slice(0,1).toUpperCase() + value.slice(1).toLowerCase()
         }
+    },
+    beforeCreate() {
+        console.log('beforeCreate')
+    },
+    created() {
+        console.log('created')
+    },
+    beforeMount() {
+        console.log('beforemount')
+    },
+    mounted() {
+        console.log('mounted')
+    },
+    beforeUpdate() {
+        console.log('beforeUpdate')
+    },
+    updated() {
+        console.log('updated')
+    },
+    beforeDestroy() {
+        console.log('beforeDestroy')
+    },
+    
+    destroyed() {
+        console.log('destroyed')
     }
+
 });
 
 var vm2 = new Vue({
