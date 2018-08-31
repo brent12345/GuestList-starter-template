@@ -73,14 +73,20 @@
               </div>
             </div>
             <div class="card-block">
-              <div v-if="guestName.length > 0">
+            
+              
+              
+         
+                <transition-group :name="effect1" tag="p">
                 <div class="card-success rounded name-box" v-for="(name, index) in sortNames" :key="index">
                     {{ name | formatName }} ({{ index + 1}})
                 </div>
-              </div>
-              <div v-else>
+              </transition-group>
+              
+              <div v-if="guestName.length === 0">
                 <h4>name not added yet....</h4>
               </div>
+            
             </div>
           </div>
 
